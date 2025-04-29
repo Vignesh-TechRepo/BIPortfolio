@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh Komarapalayam Selvan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #f5f6fa;
+            --text: #1a1a1a;
+            --section-bg: #fff;
+            --shadow: rgba(0,0,0,0.04);
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--bg);
+            margin: 0;
+            color: var(--text);
+            transition: background 0.4s, color 0.4s;
+        }
+        body.dark {
+            --primary: #8b5cf6;
+            --bg: #18181b;
+            --text: #f3f4f6;
+            --section-bg: #232336;
+            --shadow: rgba(0,0,0,0.32);
+        }
+        .parallax-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(120deg, var(--primary) 0%, #4f46e5 100%);
+            min-height: 260px;
+            box-shadow: 0 2px 16px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 0 0 0 0;
+        }
+        .parallax-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            opacity: 0.08;
+            z-index: 0;
+        }
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #e5e7eb;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            background: #e0e7ff;
+            margin-left: 48px;
+            margin-right: 36px;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+        .parallax-header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .parallax-header p {
+            color: #e0e7ff;
+            font-size: 1.2rem;
+            margin: 10px 0 0 0;
+            font-weight: 500;
+        }
+        .dark .profile-photo {
+            border: 8px solid #232336;
+            background: #232336;
+        }
+        .dark .parallax-header {
+            color: #fff;
+        }
+        .dark .parallax-header::before {
+            opacity: 0.12;
+        }
+        .toggle-dark {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.3s;
+        }
+        .toggle-dark:hover {
+            background: rgba(0,0,0,0.12);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section {
+            margin: 70px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+            background: var(--section-bg);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+        .section.parallax {
+            background: linear-gradient(120deg, #e0e7ff 0%, #f5f6fa 100%);
+            box-shadow: 0 8px 32px var(--shadow);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        .dark .section.parallax {
+            background: linear-gradient(120deg, #232336 0%, #18181b 100%);
+        }
+        .section-content {
+            flex: 1 1 400px;
+            min-width: 320px;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        .section-desc {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 24px;
+        }
+        .dark .section-desc {
+            color: #bbb;
+        }
+        .section-gallery {
+            flex: 1 1 400px;
+            min-width: 320px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery-img {
+            width: 320px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(99,102,241,0.10);
+            background: #e0e7ff;
+            margin-bottom: 10px;
+        }
+        .gallery-caption {
+            text-align: center;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 18px;
+        }
+        .dark .gallery-caption {
+            color: #eee;
+        }
+        .badges-section {
+            background: var(--section-bg);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px var(--shadow);
+            margin: 60px 0;
+            padding: 40px 32px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .badges-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .badges-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+        }
+        .badge-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 16px;
+            background: #e0e7ff;
+            box-shadow: 0 2px 8px var(--shadow);
+            margin-bottom: 8px;
+        }
+        .badge-title {
+            font-size: 0.95rem;
+            color: #333;
+            text-align: center;
+        }
+        .dark .badge-title {
+            color: #eee;
+        }
+        .contact-section, .personal-section, .resume-section {
+            background: var(--section-bg);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px var(--shadow);
+            margin: 60px 0;
+            padding: 40px 32px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .contact-link:hover {
+            color: #22223b;
+        }
+        .dark .contact-link:hover {
+            color: #fff;
+        }
+        .personal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .personal-list li {
+            margin-bottom: 10px;
+        }
+        .dark .personal-list {
+            color: #bbb;
+        }
+        .resume-download {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+        .resume-download a {
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: background 0.2s;
+        }
+        .resume-download a:hover {
+            background: #22223b;
+        }
+        footer {
+            background: var(--section-bg);
+            color: var(--primary);
+            text-align: center;
+            padding: 24px 0 16px 0;
+            margin-top: 80px;
+            font-size: 1rem;
+            box-shadow: 0 -2px 16px var(--shadow);
+        }
+        @media (max-width: 900px) {
+            .parallax-header {
+                flex-direction: column;
+                align-items: center;
+                min-height: 320px;
+                padding: 32px 0 24px 0;
+            }
+            .profile-photo {
+                margin: 0 0 18px 0;
+            }
+            .header-content {
+                align-items: center;
+                text-align: center;
+            }
+            .section, .section.reverse {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .section-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-section, .personal-section, .resume-section, .badges-section {
+                padding: 24px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="parallax-header" id="parallax-header">
+        <img class="profile-photo" src="profile-photo.jpg" alt="Profile Photo">
+        <div class="header-content">
+            <button class="toggle-dark" id="toggle-dark" title="Toggle dark mode">🌙</button>
+            <h1>Vignesh Komarapalayam Selvavn</h1>
+            <p>Showcasing Power BI Dashboards, Alteryx Workflows, Power Platform Apps, and AI Agents</p>
+        </div>
+    </header>
+
+    <section class="personal-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">About Me</h2>
+        <p style="font-size:1.1rem; color:#555; text-align:center;">
+            Microsoft certified Data Analyst and Business Intelligence developer with 10+ years of techno-functional experience. 
+            Expertise in Power BI, Alteryx, and Low-Code development in Power Platform. Multifaceted experience working in Agile environments, leading teams, and delivering actionable business insights.
+        </p>
+    </section>
+
+    <section class="contact-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Contact & Social Links</h2>
+        <div class="contact-links">
+            <a class="contact-link" href="https://www.linkedin.com/in/vignesh-k-s-5b17a550" target="_blank">🔗 LinkedIn</a>
+            <a class="contact-link" href="https://www.credly.com/users/vignesh-komarapalayam-selvan.29ab634a" target="_blank">🔗 Credly</a>
+            <a class="contact-link" href="mailto:vigneshks93@outlook.com">✉️ Email</a>
+        </div>
+    </section>
+
+    <section class="personal-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Skills</h2>
+        <ul class="personal-list" style="columns:2; -webkit-columns:2; -moz-columns:2;">
+            <li>Power BI (PowerQuery, DAX, Data Modelling, Visualization)</li>
+            <li>Alteryx (Data Transformation, Data Modelling)</li>
+            <li>SQL, Database, PL/SQL, dbeaver</li>
+            <li>Business Intelligence & Insights</li>
+            <li>Data Analysis & Visualization</li>
+            <li>Agile, Product Management</li>
+            <li>Requirement Analysis</li>
+            <li>Problem Solving</li>
+        </ul>
+    </section>
+
+    <section class="personal-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Awards</h2>
+        <ul class="personal-list">
+            <li>Best Performer, EY (2025)</li>
+            <li>Onshore Recognition, EY (2024)</li>
+            <li>Exceptional Client Service Award, EY (2023, 2022)</li>
+            <li>Pursuing Innovation, EY (2023)</li>
+            <li>Service Strategy Award, Maveric Systems (2017)</li>
+        </ul>
+    </section>
+
+    <section class="badges-section">
+        <div class="badges-title">Badges & Certifications</div>
+        <div class="badges-gallery">
+            <div class="badge-item">
+                <img class="badge-img" src="https://img.icons8.com/color/96/000000/microsoft-certified-badge.png" alt="Power BI Data Analyst Associate">
+                <div class="badge-title">Power BI Data Analyst Associate (Microsoft)</div>
+            </div>
+            <div class="badge-item">
+                <img class="badge-img" src="https://img.icons8.com/color/96/000000/alteryx.png" alt="Alteryx Designer Core">
+                <div class="badge-title">Alteryx Designer Core (Alteryx)</div>
+            </div>
+            <div class="badge-item">
+                <img class="badge-img" src="https://img.icons8.com/color/96/000000/azure-1.png" alt="Azure Data Fundamentals">
+                <div class="badge-title">Azure Data Fundamentals (Microsoft)</div>
+            </div>
+            <div class="badge-item">
+                <img class="badge-img" src="https://img.icons8.com/color/96/000000/medal2--v2.png" alt="Gold Badge on Data Visualisation">
+                <div class="badge-title">Gold Badge on Data Visualisation (EY)</div>
+            </div>
+            <!-- Add more as needed -->
+        </div>
+        <p style="text-align:center; margin-top:10px;">
+            <a href="https://www.credly.com/users/vignesh-komarapalayam-selvan.29ab634a" target="_blank" style="color:var(--primary);font-weight:600;">See all badges on Credly</a>
+        </p>
+    </section>
+
+    <section class="resume-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Resume</h2>
+        <div class="resume-download">
+            <span>Download my latest resume:</span>
+            <a href="resume.pdf" download>📄 Download Resume</a>
+        </div>
+    </section>
+
+    <main>
+        <section class="section parallax">
+            <div class="section-content">
+                <div class="section-title">Power BI Dashboards</div>
+                <div class="section-desc">Interactive and insightful dashboards for business intelligence and analytics. Explore my best Power BI work below.</div>
+            </div>
+            <div class="section-gallery">
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Power BI Dashboard Mockup">
+                    <div class="gallery-caption">Sales Analytics Dashboard</div>
+                </div>
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Power BI Dashboard Mockup">
+                    <div class="gallery-caption">Customer Segmentation</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reverse parallax">
+            <div class="section-content">
+                <div class="section-title">Alteryx Workflows</div>
+                <div class="section-desc">Automated workflows for data cleansing, ETL, and advanced analytics using Alteryx. See how I streamline data processes.</div>
+            </div>
+            <div class="section-gallery">
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Alteryx Workflow Mockup">
+                    <div class="gallery-caption">Data Cleansing Workflow</div>
+                </div>
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Alteryx Workflow Mockup">
+                    <div class="gallery-caption">ETL Automation</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section parallax">
+            <div class="section-content">
+                <div class="section-title">Power Platform Apps</div>
+                <div class="section-desc">Custom business applications built with Microsoft Power Platform to automate and enhance business processes.</div>
+            </div>
+            <div class="section-gallery">
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Power Platform App Mockup">
+                    <div class="gallery-caption">Expense Tracker App</div>
+                </div>
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Power Platform App Mockup">
+                    <div class="gallery-caption">Employee Onboarding</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reverse parallax">
+            <div class="section-content">
+                <div class="section-title">AI Agents (MS Copilot)</div>
+                <div class="section-desc">AI-powered agents and copilots built using Microsoft Copilot for automation, support, and business insights.</div>
+            </div>
+            <div class="section-gallery">
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="AI Agent Mockup">
+                    <div class="gallery-caption">Customer Support Bot</div>
+                </div>
+                <div>
+                    <img class="gallery-img" src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80" alt="AI Agent Mockup">
+                    <div class="gallery-caption">Sales Assistant Copilot</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="personal-section">
+        <h2 style="text-align:center; color:var(--primary); margin-bottom:10px;">Personal Details</h2>
+        <ul class="personal-list">
+            <li><strong>Location:</strong> Chennai, India</li>
+            <li><strong>Profession:</strong> Associate Manager - Business Intelligence / Data</li>
+            <li><strong>Experience:</strong> 10+ years in Data Analytics & Business Intelligence</li>
+            <li><strong>Education:</strong> EPGP, Loyola Institute of Business Administration; B.E., Anna University</li>
+            <li><strong>Interests:</strong> Power BI, Power Platform, Data Visualization, Automation, Cloud, Agile</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+    <script>
+        // Parallax effect for header and sections
+        function parallaxScroll() {
+            const header = document.getElementById('parallax-header');
+            let offset = window.scrollY;
+            header.style.backgroundPosition = 'center ' + (offset * 0.3) + 'px';
+            document.querySelectorAll('.section.parallax').forEach((section, i) => {
+                section.style.backgroundPosition = 'center ' + ((offset - section.offsetTop) * 0.2) + 'px';
+            });
+        }
+        window.addEventListener('scroll', parallaxScroll);
+        // Dark mode toggle
+        const toggleBtn = document.getElementById('toggle-dark');
+        const body = document.body;
+        toggleBtn.onclick = function() {
+            body.classList.toggle('dark');
+            if(body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleBtn.textContent = '🌙';
+            }
+        };
+        // Load theme from localStorage
+        if(localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark');
+            document.getElementById('toggle-dark').textContent = '☀️';
+        }
+    </script>
+</body>
+</html>
