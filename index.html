@@ -635,6 +635,64 @@
             color: #f3f4f6 !important;
             font-size: 1.1rem;
         }
+        .mywork-section {
+            background: linear-gradient(120deg, rgba(40,40,50,0.85) 0%, rgba(24,24,27,0.95) 100%);
+            border-radius: 24px;
+            box-shadow: 0 4px 24px var(--shadow);
+            margin: 60px 0;
+            padding: 40px 32px;
+            margin-left: 8vw;
+            width: calc(100vw - 16vw);
+            max-width: 1200px;
+            min-width: 320px;
+        }
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .project-card { 
+            background: rgba(40,40,50,0.18);
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            color: #f3f4f6;
+            transition: box-shadow 0.2s;
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .project-tools {
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+        .project-summary {
+            margin-bottom: 10px;
+            color: #eceaea;
+        }
+        .project-roles {
+            margin: 0;
+            padding-left: 18px;
+            color: #f3f4f6;
+            font-size: 1.05rem;
+        }
+        .project-roles li {
+            margin-bottom: 6px;
+        }
+        .detail-header {
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 6px;
+        }
+        .personal-list li {
+            font-weight: normal;
+            color: #f3f4f6;
+        }
     </style>
 </head>
 <body>
@@ -645,7 +703,7 @@
             <div class="hero-subtitle">Associate Manager - Business Intelligence / Data Analytics<br>Microsoft Certified Data Analyst & BI Developer</div>
             <div class="hero-buttons">
                 <a href="resume.pdf" download class="hero-btn btn-primary">Download CV</a>
-                <a href="#portfolio" class="hero-btn btn-secondary">My Work</a>
+                <a href="#mywork" class="hero-btn btn-secondary">My Work</a>
             </div>
             <div class="contact-links" style="justify-content: flex-start; margin-top: 18px;">
                 <a class="contact-link" href="https://www.linkedin.com/in/vignesh-k-s-5b17a550" target="_blank">🔗 LinkedIn</a>
@@ -715,7 +773,14 @@
                 <img class="badge-img" src="badges/gold-medal.png" alt="Gold Badge on Data Visualisation">
                 <div class="badge-title">Gold Badge on Data Visualisation (EY)</div>
             </div>
-            <!-- Add more as needed -->
+            <div class="badge-item">
+                <img class="badge-img" src="badges/agilebadge.png" alt="Silver Badge on Agile">
+                <div class="badge-title">Silver Badge on Agile (EY)</div>
+            </div>
+            <div class="badge-item">
+                <img class="badge-img" src="badges/ppfundamentals.png" alt="Power Platform Fundamentals">
+                <div class="badge-title">Power Platform Fundamentals (Microsoft)</div>
+            </div>
         </div>
         <p style="text-align:center; margin-top:10px;">
             <a href="https://www.credly.com/users/vignesh-komarapalayam-selvan.29ab634a" target="_blank" style="color:var(--primary);font-weight:600;">See all badges on Credly</a>
@@ -792,17 +857,46 @@
         -->
     </main>
 
-    <section class="personal-section">
-        <h2 style="text-align:left;" class="section-header">Personal Details</h2>
-        <ul class="personal-list">
-            <li><strong>Location:</strong> Chennai, India</li>
-            <li><strong>Profession:</strong> Associate Manager - Business Intelligence / Data</li>
-            <li><strong>Experience:</strong> 10+ years in Data Analytics & Business Intelligence</li>
-            <li><strong>Education:</strong> EPGP, Loyola Institute of Business Administration; B.E., Anna University</li>
-            <li><strong>Interests:</strong> Power BI, Power Platform, Data Visualization, Automation, Cloud, Agile</li>
-        </ul>
+    <section class="mywork-section" id="mywork">
+        <h2 class="section-header">My Work</h2>
+        <div class="projects-list">
+            <!-- Example Project -->
+            <div class="project-card">
+                <div class="project-title">ROPE - Resource Overall Performance Evaluator</div>
+                <div class="project-tools">Power BI, Power App, DAX, Sharepoint, PowerQuery</div>
+                <div class="project-summary">
+                Designed and implemented a structured performance evaluation framework utilizing Power Apps and Power BI. Developed a logic-driven scoring model based on weighted pillars and quantifiable metrics, ensuring objective assessments. Automated data processing to generate individual performance scores, enabling stack ranking and data-driven recommendations aligned with predefined bell curve distributions. Enhanced transparency, efficiency, and fairness in resource evaluation through a streamlined, technology-driven approach.                </div>
+                <ul class="project-roles">
+                    <li>Developed a structured performance evaluation framework integrating Power Apps and Power BI</li>
+                    <li>Managed the entire project lifecycle, from initial design to final implementation with 3 member team</li>
+                    <li>Streamlined data entry, processing, and performance ranking through automated workflows</li>
+                    <li>Designed Power BI dashboards for real-time insights, facilitating managerial decision-making</li>
+                    <li>Worked closely with Leaders and teams to define evaluation parameters and ensure alignment with business goals.</li>
+                    <li>Conducted refinements and enhancements to improve accuracy, fairness, and efficiency in evaluations</li>
+                    <li>Implemented Row Level Security to ensure data privacy and security</li>
+                </ul>
+            </div>
+        <div class="project-card">
+                <div class="project-title">RTO Dashboard</div>
+                <div class="project-tools">Power BI, Sharepoint, DAX, PowerQuery</div>
+                <div class="project-summary">   
+                Led the design and implementation of an RTO compliance monitoring dashboard using Power BI. The dashboard consolidates swipe-in data across office locations and compares it against predefined expected office days for each role, rank, and project status. A logic-driven reconciliation system, built in Power Query, evaluates total RTO days against required minimums while factoring in approved remote work requests. The solution provides a clear compliance status for each resource, supporting organizational goals for office attendance tracking and adherence to RTO policies.
+                <ul class="project-roles">
+                    <li>Designed and led the implementation of the RTO dashboard, aligning with organizational return-to-office objectives.</li>
+                    <li>Developed Power Query logic to consolidate swipe-in records, expected office days, and approved remote work requests</li>
+                    <li>Built a rule-based model to assess adherence against predefined thresholds, ensuring accurate compliance reporting</li>
+                    <li>Created interactive Power BI dashboards for leadership insights, tracking trends and office attendance patterns</li>
+                    <li>Collaborated with business leaders and talent teams to refine compliance logic and ensure alignment with company policies</li>
+                    <li>Continuously refined the system to improve accuracy, automate reconciliations, and enhance data-driven decision-making</li>
+                </ul>
+            </div>
+
+
+            <!-- Add more .project-card blocks for each project -->
+        </div>
     </section>
 
+   
     <section class="testimonial-section">
         <h2 class="testimonial-title">Testimonials & Recommendations</h2>
         <div class="testimonial-carousel">
@@ -855,8 +949,19 @@
         </div>
     </section>
 
+
+<section class="personal-section">
+        <h2 class="section-header">Personal Details</h2>
+        <ul class="personal-list">
+            <li><span class="detail-header">Location:</span> Chennai, India</li>
+            <li><span class="detail-header">Experience:</span> 10+ years</li>
+            <li><span class="detail-header">Education:</span> EPGP, Loyola Institute of Business Administration; B.E., Anna University</li>
+            <li><span class="detail-header">Hobbies:</span> Photography, Cooking</li>
+        </ul>
+    </section>
+
     <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
     </footer>
     <script>
         // Parallax effect for header and sections
